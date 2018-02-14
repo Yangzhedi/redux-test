@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 // import './index.css';
 import App from './App';
@@ -21,10 +22,34 @@ const store = createStore(counter, compose(
     reduxDevtools
 ));
 
+function Er(){
+    return <h2>Er</h2>
+}
+function San(){
+    return <h2>San</h2>
+}
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <BrowserRouter>
+            {/*<App />*/}
+            <div>
+                <ul>
+                    <li>
+                        <Link to='/'>1</Link>
+                    </li>
+                    <li>
+                        <Link to='/er'>2</Link>
+                    </li>
+                    <li>
+                        <Link to='/san'>3</Link>
+                    </li>
+                </ul>
+                <Route path='/' exact component={App}></Route>
+                <Route path='/er' component={Er}></Route>
+                <Route path='/san' component={San}></Route>
+            </div>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );
