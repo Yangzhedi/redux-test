@@ -5,7 +5,20 @@ import logo from './logo.svg';
 import './App.css';
 import {Button} from 'antd-mobile'
 
+// const mapStatetoProps = state => {
+//     return {num:state}
+// };
+// const actionCreator = { addCountAsync,subCount, addCount };
+// 装饰器的写法
+// App = connect(mapStatetoProps, actionCreator)(App);
 
+
+@connect(
+    // 你要state的什么属性，放在props里
+    state => ({num:state}),
+    // 你要什么方法，放在props里，自动dispatch
+    { addCountAsync,subCount, addCount }
+)
 class App extends Component {
     render() {
         const num = this.props.num;
@@ -15,8 +28,8 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                  <img src={logo} className="App-logo" alt="logo" />
-                  <h1 className="App-title">现在有数字{num}</h1>
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">现在有数字{num}</h1>
                 </header>
                 <Button type='primary' onClick={addCount}> 加 </Button>
                 <Button type='primary' onClick={subCount}> - </Button>
@@ -25,12 +38,5 @@ class App extends Component {
         );
     }
 }
-
-const mapStatetoProps = state => {
-    return {num:state}
-};
-const actionCreator = { addCountAsync,subCount, addCount };
-// 装饰器的写法
-App = connect(mapStatetoProps, actionCreator)(App);
 
 export default App;
