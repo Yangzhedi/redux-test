@@ -17,34 +17,28 @@ function San(){
     { logout }
 )
 class Dashboard extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     render(){
-        console.log(this.props)
+        const match = this.props.match;
         const redirectToLogin = <Redirect to='/login' />;
         const app = ( <div>
             <h1>123</h1>
             { this.props.isAuth? <button  onClick={this.props.logout}>注销</button>:null}
             <ul>
                 <li>
-                    <Link to='/dashboard/'>1</Link>
+                    <Link to={`${match.url}/`}>1</Link>
                 </li>
                 <li>
-                    <Link to='/dashboard/er'>2</Link>
+                    <Link to={`${match.url}/er`}>2</Link>
                 </li>
                 <li>
-                    <Link to='/dashboard/san'>3</Link>
+                    <Link to={`${match.url}/san`}>3</Link>
                 </li>
             </ul>
-            <Route path='/dashboard/' exact component={App} />
-            <Route path='/dashboard/er' component={Er} />
-            <Route path='/dashboard/san' component={San} />
+            <Route path={`${match.url}/`} exact component={App} />
+            <Route path={`${match.url}/er`} component={Er} />
+            <Route path={`${match.url}/san`} component={San} />
         </div>);
         return this.props.isAuth ? app: redirectToLogin;
-
     }
-
 }
 export default Dashboard;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Route, Redirect} from 'react-router-dom'
+import { Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from './Auth.redux'
 
@@ -8,12 +8,8 @@ import { login } from './Auth.redux'
     {login}
 )
 class Auth extends React.Component {
-    constructor(props){
-        super(props)
-    }
 
     render(){
-
         return (
             <div>
                 { this.props.isAuth ? <Redirect to='/dashboard' /> : null}
