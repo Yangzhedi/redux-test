@@ -4,14 +4,14 @@ const ADD_COUNT = 'addition';
 const SUB_COUNT = 'subtraction';
 
 // reducer
-export function counter( state=0 , action) {
+export function counter( state=10 , action) {
     switch (action.type){
         case 'addition':
             return state + 1;
         case 'subtraction':
             return state - 1;
         default:
-            return 10;
+            return state;
     }
 }
 

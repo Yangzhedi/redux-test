@@ -15,7 +15,7 @@ import {Button} from 'antd-mobile'
 
 @connect(
     // 你要state的什么属性，放在props里
-    state => ({num:state}),
+    state => ({num:state.counter}),
     // 你要什么方法，放在props里，自动dispatch
     { addCountAsync,subCount, addCount }
 )

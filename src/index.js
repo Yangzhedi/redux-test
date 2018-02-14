@@ -3,52 +3,43 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom'
 
 // import './index.css';
-import App from './App';
-import { counter } from "./index.redux";
-
+// import { counter } from "./index.redux";
+import reducers from './reducer'
+import Auth from './Auth'
+import Dashboard from './Dashboard'
 // import registerServiceWorker from './registerServiceWorker';
-
-// ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
 
 // applyMiddleware 管理中间件
-const store = createStore(counter, compose(
+const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     reduxDevtools
 ));
+console.log(store.getState())
+// class Test extends React.Component{
+//     render(){
+//         console.log(this.props);
+//         return <h2>测试  {this.props.match.params.location}</h2>
+//     }
+// }
 
-function Er(){
-    return <h2>Er</h2>
-}
-function San(){
-    return <h2>San</h2>
-}
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             {/*<App />*/}
-            <div>
-                <ul>
-                    <li>
-                        <Link to='/'>1</Link>
-                    </li>
-                    <li>
-                        <Link to='/er'>2</Link>
-                    </li>
-                    <li>
-                        <Link to='/san'>3</Link>
-                    </li>
-                </ul>
-                <Route path='/' exact component={App}></Route>
-                <Route path='/er' component={Er}></Route>
-                <Route path='/san' component={San}></Route>
-            </div>
+
+            <Switch>
+                {/*只渲染命中的第一个Route*/}
+                <Route path='/login' exact component={Auth}></Route>
+                <Route path='/dashboard' component={Dashboard}></Route>
+                <Redirect to='/dashboard'></Redirect>
+            </Switch>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')
