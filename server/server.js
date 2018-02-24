@@ -37,7 +37,7 @@ app.get('/',function (req, res) {
 });
 
 app.get('/data',function (req, res) {
-    User.findOne({user:'imooc1'}, function (err, doc) {
+    User.findOne({user:'xiaoming'}, function (err, doc) {
        res.json(doc)
     });
     // res.json({name:'imooc',type:'123'})
