@@ -25,10 +25,12 @@ export function auth(state=initState, action) {
 
 export function getUserData() {
     return dispatch => {
-        axios.get('/data')
+        axios.get('/blog1')
             .then( res => {
                 if (res.status === 200) {
-                    dispatch(userData(res.data));
+                    // dispatch(userData(res.data));
+                    console.log(123)
+                    console.log(res)
                 }
             })
     }
