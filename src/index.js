@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
 
 // import './index.css';
 // import { counter } from "./index.redux";
 import reducers from './reducer'
 import Auth from './Auth'
+import MenuBar from './components/MenuBar'
 // import Dashboard from './Dashboard'
 import './config'
 // import registerServiceWorker from './registerServiceWorker';
@@ -54,17 +55,20 @@ const Admin = (props) => (
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <Router>
             {/*<App />*/}
-            <Switch>
-                {/*只渲染命中的第一个Route*/}
-                <Route path='/' exact component={Auth2} />
-                <Route path='/login' component={Auth} />
-                <Route path='/dashboard' component={Dashboard} />
-                <Route path='/admin' component={Admin} />
-                <Redirect to='/dashboard' />
-            </Switch>
-        </BrowserRouter>
+            <div>
+                <MenuBar/>
+                <Switch>
+                    {/*只渲染命中的第一个Route*/}
+                    <Route path='/' exact component={Auth2} />
+                    <Route path='/login' component={Auth} />
+                    <Route path='/dashboard' component={Dashboard} />
+                    <Route path='/admin' component={Admin} />
+                    <Redirect to='/dashboard' />
+                </Switch>
+            </div>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );
