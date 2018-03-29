@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect, Switch, Link } from 'react-router-dom'
 
 // import './index.css';
 // import { counter } from "./index.redux";
 import reducers from './reducer'
 import Auth from './Auth'
-import Dashboard from './Dashboard'
+// import Dashboard from './Dashboard'
 import './config'
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
+
+import Bundle from './Bundle'
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
 
@@ -28,6 +30,27 @@ const store = createStore(reducers, compose(
 //     }
 // }
 
+function Auth2 (){
+    return (
+        <div>
+            <h2>测试Auth2</h2>
+            <Link to='/dashboard'>dashboard</Link>
+            <Link to='/admin'>admin</Link>
+        </div>
+    );
+}
+
+const Dashboard = (props) => (
+    <Bundle load={() => import('./Dashboard')}>
+        {(Dashboard) => <Dashboard {...props}/>}
+    </Bundle>
+);
+
+const Admin = (props) => (
+    <Bundle load={() => import('./Admin')}>
+        {(Admin) => <Admin {...props}/>}
+    </Bundle>
+);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -35,8 +58,10 @@ ReactDOM.render(
             {/*<App />*/}
             <Switch>
                 {/*只渲染命中的第一个Route*/}
-                <Route path='/login' exact component={Auth} />
+                <Route path='/' exact component={Auth2} />
+                <Route path='/login' component={Auth} />
                 <Route path='/dashboard' component={Dashboard} />
+                <Route path='/admin' component={Admin} />
                 <Redirect to='/dashboard' />
             </Switch>
         </BrowserRouter>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login, getUserData } from './Auth.redux'
-
+import axios from "axios";
 
 @connect(
     state => state.auth,
@@ -17,7 +17,14 @@ class Auth extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getUserData()
+        this.props.login()
+        // axios.get('/blog1')
+        //     .then( res => {
+        //         if (res.status === 200) {
+        //             // dispatch(userData(res.data));
+        //             console.log(res.data)
+        //         }
+        //     })
     }
 
     render(){
