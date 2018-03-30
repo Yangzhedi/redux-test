@@ -5,12 +5,12 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { HashRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
 
-// import './index.css';
+import './index.css';
 // import { counter } from "./index.redux";
 import reducers from './reducer'
 import Auth from './Auth'
 import MenuBar from './components/MenuBar'
-// import Dashboard from './Dashboard'
+
 import './config'
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
@@ -35,15 +35,25 @@ function Auth2 (){
     return (
         <div>
             <h2>测试Auth2</h2>
-            <Link to='/dashboard'>dashboard</Link>
+            {/*<Link to='/dashboard'>dashboard</Link>*/}
             <Link to='/admin'>admin</Link>
         </div>
     );
 }
 
-const Dashboard = (props) => (
-    <Bundle load={() => import('./Dashboard')}>
-        {(Dashboard) => <Dashboard {...props}/>}
+function Auth3 (){
+    return (
+        <div className="container">
+            <h2>Auth3</h2>
+            {/*<Link to='/dashboard'>dashboard</Link>*/}
+            <Link to='/admin'>Auth3Auth3Auth3Auth3Auth3Auth3Auth3</Link>
+        </div>
+    );
+}
+
+const About = (props) => (
+    <Bundle load={() => import('./container/about/About')}>
+        {(About) => <About {...props}/>}
     </Bundle>
 );
 
@@ -61,11 +71,11 @@ ReactDOM.render(
                 <MenuBar/>
                 <Switch>
                     {/*只渲染命中的第一个Route*/}
-                    <Route path='/' exact component={Auth2} />
-                    <Route path='/login' component={Auth} />
-                    <Route path='/dashboard' component={Dashboard} />
-                    <Route path='/admin' component={Admin} />
-                    <Redirect to='/dashboard' />
+                    <Route path='/' exact component={Auth3} />
+                    <Route path='/blog' component={Auth2} />
+                    <Route path='/stock' component={Admin} />
+                    <Route path='/about' component={About} />
+                    {/*<Redirect to='/stock' />*/}
                 </Switch>
             </div>
         </Router>

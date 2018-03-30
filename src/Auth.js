@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login, getUserData } from './Auth.redux'
-import axios from "axios";
 
 @connect(
     state => state.auth,

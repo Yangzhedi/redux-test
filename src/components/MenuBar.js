@@ -1,43 +1,54 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import { HashRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import { withRouter } from 'react-router-dom'
 
 
-export default class MenuBar extends React.Component {
-    state = {
-        current: 'mail',
+class MenuBar extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            current: 'home',
+        }
     }
+
+    componentWillMount(){
+        let state = this.props.history.location.pathname.split('/')[1];
+        this.setState({
+            current: state || 'home'
+        });
+    }
+
     handleClick = (e) => {
         console.log('click ', e);
         this.setState({
             current: e.key,
         });
-    }
+        this.props.history.push('/'+ (e.key === 'home' ? '': e.key));
+    };
+
     render() {
         return (
-            <Menu
-                onClick={this.handleClick}
+            <Menu onClick={this.handleClick}  className="menubar"
                 selectedKeys={[this.state.current]}
                 mode="horizontal"
             >
-                <Menu.Item key="mail">
-
-                    <Link to='/admin'><Icon type="mail" />Navigation One</Link>
-
+                <Menu.Item key="home">
+                    <Icon type="home" /> 主页
                 </Menu.Item>
-                <Menu.Item key="app">
-                    <Link to='/dashboard'><Icon type="mail" />Navigation two</Link>
+                <Menu.Item key="blog">
+                    <Icon type="book" /> 博客
                 </Menu.Item>
-
-                <Menu.Item key="setting" disabled>
-                    <Icon type="appstore" />Navigation Three
+                <Menu.Item key="stock">
+                   <Icon type="file-excel" /> 数据
                 </Menu.Item>
-                <Menu.Item key="alipay">
-                    <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+                <Menu.Item key="about">
+                   <Icon type="solution" /> 关于
+                </Menu.Item>
+                <Menu.Item key="zip" disabled>
+                    <Icon type="picture" /> 图片压缩
                 </Menu.Item>
             </Menu>
         );
     }
 }
+export default withRouter(MenuBar);
