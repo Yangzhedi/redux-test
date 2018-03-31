@@ -28,26 +28,30 @@ class MenuBar extends React.Component {
 
     render() {
         return (
-            <Menu onClick={this.handleClick}  className="menubar"
-                selectedKeys={[this.state.current]}
-                mode="horizontal"
-            >
-                <Menu.Item key="home">
-                    <Icon type="home" /> 主页
-                </Menu.Item>
-                <Menu.Item key="blog">
-                    <Icon type="book" /> 博客
-                </Menu.Item>
-                <Menu.Item key="stock">
-                   <Icon type="file-excel" /> 数据
-                </Menu.Item>
-                <Menu.Item key="about">
-                   <Icon type="solution" /> 关于
-                </Menu.Item>
-                <Menu.Item key="zip" disabled>
-                    <Icon type="picture" /> 图片压缩
-                </Menu.Item>
-            </Menu>
+            <div className="menubar-container">
+                <a onClick={() => { this.props.history.push('/');this.setState({current: 'home'}) }}>杨哲迪的个人网站</a>
+                <Menu onClick={this.handleClick}
+                      selectedKeys={[this.state.current]}
+                      mode="horizontal"
+                >
+                    <Menu.Item key="home">
+                        <Icon type="home" /> 主页
+                    </Menu.Item>
+                    <Menu.Item key="blog">
+                        <Icon type="book" /> 博客
+                    </Menu.Item>
+                    <Menu.Item key="stock">
+                        <Icon type="file-excel" /> 数据
+                    </Menu.Item>
+                    <Menu.Item key="about">
+                        <Icon type="solution" /> 关于
+                    </Menu.Item>
+                    <Menu.Item key="zip" disabled>
+                        <Icon type="picture" /> 图片压缩
+                    </Menu.Item>
+                </Menu>
+            </div>
+
         );
     }
 }

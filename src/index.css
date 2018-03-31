@@ -3,12 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-/*.menubar{*/
-  /*width: 80%;*/
-/*}*/
+.menubar-container{
+  position: relative;
+  min-width: 1000px;
+  padding: 0 22%;
+  margin: auto;
+/* text-align: center; */
+  border-bottom: 1px solid #e8e8e8;
 
-.ant-menu.menubar{
-  padding-left: 20%;
+}
+.menubar-container a,
+.menubar-container a:link,
+.menubar-container a:hover ,
+.menubar-container a:active,
+.menubar-container a:visited{
+  position: absolute;
+  top: 10px;
+  margin-left: -160px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
+}
+.menubar-container ul{
+  border-bottom: none;
 }
 
 .container{

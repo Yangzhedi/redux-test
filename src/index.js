@@ -57,11 +57,13 @@ const About = (props) => (
     </Bundle>
 );
 
-const Admin = (props) => (
-    <Bundle load={() => import('./Admin')}>
-        {(Admin) => <Admin {...props}/>}
+const BlogList = (props) => (
+    <Bundle load={() => import('./container/blog/BlogList')}>
+        {(BlogList) => <BlogList {...props}/>}
     </Bundle>
 );
+
+
 
 ReactDOM.render(
     <Provider store={store}>
@@ -71,11 +73,11 @@ ReactDOM.render(
                 <MenuBar/>
                 <Switch>
                     {/*只渲染命中的第一个Route*/}
-                    <Route path='/' exact component={Auth3} />
-                    <Route path='/blog' component={Auth2} />
-                    <Route path='/stock' component={Admin} />
+                    <Route path='/' exact component={About} />
+                    <Route path='/blog' component={BlogList} />
+                    <Route path='/stock' component={Auth3} />
                     <Route path='/about' component={About} />
-                    {/*<Redirect to='/stock' />*/}
+                    <Redirect to='/' />
                 </Switch>
             </div>
         </Router>
