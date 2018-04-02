@@ -46,6 +46,9 @@ class MenuBar extends React.Component {
                     <Menu.Item key="about">
                         <Icon type="solution" /> 关于
                     </Menu.Item>
+                    <Menu.Item key="code-guide">
+                        <Icon type="code-o" /> 规范
+                    </Menu.Item>
                     <Menu.Item key="zip" disabled>
                         <Icon type="picture" /> 图片压缩
                     </Menu.Item>

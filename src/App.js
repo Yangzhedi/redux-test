@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addCountAsync,subCount, addCount } from "./index.redux";
 import logo from './logo.svg';
 import './App.css';
-import {Button} from 'antd-mobile'
+import { Icon } from 'antd'
 
 // const mapStatetoProps = state => {
 //     return {num:state}
@@ -20,20 +20,32 @@ import {Button} from 'antd-mobile'
     { addCountAsync,subCount, addCount }
 )
 class App extends Component {
+
+    componentWillMount(){
+        document.title = '杨哲迪的个人网站 - Yang Zhedi\'s Personal Website';
+    }
     render() {
         const num = this.props.num;
         const addCount = this.props.addCount;
         const subCount = this.props.subCount;
         const addCountAsync = this.props.addCountAsync;
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">现在有数字{num}</h1>
-                </header>
-                <Button type='primary' onClick={addCount}> 加 </Button>
-                <Button type='primary' onClick={subCount}> - </Button>
-                <Button type='primary' onClick={addCountAsync}> 拖两天 </Button>
+            <div className="container">
+                this website is made by Django 2.0 and React 16
+                <img src={logo} className="App-logo" alt="logo" />
+                <p>博客</p>
+                <p>数据</p>
+                <p>留言发送到<a href="Mailto:uiryzd@163.com">uiryzd@163.com</a></p>
+                <a href="https://www.zhihu.com/people/yang-xiao-shi-er" target="_blank">
+                    <Icon type="zhihu" style={{ fontSize: 20, color: '#0084ff' }}/>
+                </a>
+                <a href="https://weibo.com/2623520145/profile" target="_blank">
+                    <Icon type="weibo" style={{ fontSize: 20, color: '#e6162d' }}/>
+                </a>
+                <a href="https://github.com/Yangzhedi" target="_blank">
+                    <Icon type="github" style={{ fontSize: 20, color: '#24292e' }}/>
+                </a>
+
             </div>
         );
     }

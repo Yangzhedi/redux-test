@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { HashRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
 
 import './index.css';
 // import { counter } from "./index.redux";
 import reducers from './reducer'
-import Auth from './Auth'
+import App from './App'
 import MenuBar from './components/MenuBar'
+import About from './container/about/About'
 
 import './config'
+import gif from './imgs/404.gif'
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
 
@@ -24,22 +26,6 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     reduxDevtools
 ));
-// class Test extends React.Component{
-//     render(){
-//         console.log(this.props);
-//         return <h2>测试  {this.props.match.params.location}</h2>
-//     }
-// }
-
-function Auth2 (){
-    return (
-        <div>
-            <h2>测试Auth2</h2>
-            {/*<Link to='/dashboard'>dashboard</Link>*/}
-            <Link to='/admin'>admin</Link>
-        </div>
-    );
-}
 
 function Auth3 (){
     return (
@@ -51,9 +37,9 @@ function Auth3 (){
     );
 }
 
-const About = (props) => (
-    <Bundle load={() => import('./container/about/About')}>
-        {(About) => <About {...props}/>}
+const CodeGuide = (props) => (
+    <Bundle load={() => import('./container/code-guide/CodeGuide')}>
+        {(CodeGuide) => <CodeGuide {...props}/>}
     </Bundle>
 );
 
@@ -63,6 +49,12 @@ const BlogList = (props) => (
     </Bundle>
 );
 
+const NoMatch = ({ location }) => (
+    <div className="container">
+        <p>Nothing matched {location.pathname}.</p>
+        <img src={gif} alt="404的图片404了"/>
+    </div>
+)
 
 
 ReactDOM.render(
@@ -71,14 +63,22 @@ ReactDOM.render(
             {/*<App />*/}
             <div>
                 <MenuBar/>
-                <Switch>
-                    {/*只渲染命中的第一个Route*/}
-                    <Route path='/' exact component={About} />
-                    <Route path='/blog' component={BlogList} />
-                    <Route path='/stock' component={Auth3} />
-                    <Route path='/about' component={About} />
-                    <Redirect to='/' />
-                </Switch>
+                <div className="container">
+                    <Switch>
+                        {/*只渲染命中的第一个Route*/}
+                        <Route path='/' exact component={App} />
+                        <Route path='/blog' component={BlogList} />
+                        <Route path='/stock' component={Auth3} />
+                        <Route path='/about' component={About} />
+                        <Route path='/code-guide' component={CodeGuide} />
+                        {/*<Miss component={NoMatch}/>*/}
+                        {/*<Redirect to='/' />*/}
+                        <Route path="*" component={NoMatch} />
+                        {/*<Route path='/404' component={NoMatch} />*/}
+                        {/*<Redirect from='*' to='/404' />*/}
+                    </Switch>
+                </div>
+
             </div>
         </Router>
     </Provider>,

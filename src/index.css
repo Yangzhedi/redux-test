@@ -36,3 +36,23 @@ body {
   width: 1000px;
   min-height: 500px;
 }
+
+.main{
+  background: #f66;
+  width: 100%;
+  float: left;
+}
+.content{
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 200px;
+}
+.left{
+  background:#fcc;
+  width: 200px;
+  float: left;
+  margin-left: -100%;
+  position: relative;
+  left: -200px;
+  height: 50px;
+}
