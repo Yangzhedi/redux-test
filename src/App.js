@@ -30,11 +30,9 @@ class App extends Component {
         const subCount = this.props.subCount;
         const addCountAsync = this.props.addCountAsync;
         return (
-            <div className="container">
+            <div className="">
                 this website is made by Django 2.0 and React 16
                 <img src={logo} className="App-logo" alt="logo" />
-                <p>博客</p>
-                <p>数据</p>
                 <p>留言发送到<a href="Mailto:uiryzd@163.com">uiryzd@163.com</a></p>
                 <a href="https://www.zhihu.com/people/yang-xiao-shi-er" target="_blank">
                     <Icon type="zhihu" style={{ fontSize: 20, color: '#0084ff' }}/>

@@ -10,7 +10,7 @@ export default class BlogList extends React.Component {
 
     render() {
         return (
-            <div className="container">BlogList</div>
+            <div className="">BlogList</div>
         );
     }
 }

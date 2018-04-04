@@ -27,12 +27,10 @@ const store = createStore(reducers, compose(
     reduxDevtools
 ));
 
-function Auth3 (){
+function Stock (){
     return (
-        <div className="container">
-            <h2>Auth3</h2>
-            {/*<Link to='/dashboard'>dashboard</Link>*/}
-            <Link to='/admin'>Auth3Auth3Auth3Auth3Auth3Auth3Auth3</Link>
+        <div>
+            <h2>Stock</h2>
         </div>
     );
 }
@@ -68,7 +66,7 @@ ReactDOM.render(
                         {/*只渲染命中的第一个Route*/}
                         <Route path='/' exact component={App} />
                         <Route path='/blog' component={BlogList} />
-                        <Route path='/stock' component={Auth3} />
+                        <Route path='/stock' component={Stock} />
                         <Route path='/about' component={About} />
                         <Route path='/code-guide' component={CodeGuide} />
                         {/*<Miss component={NoMatch}/>*/}
