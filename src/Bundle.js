@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spin } from 'antd';
 
 export default class Bundle extends React.Component {
     constructor(props) {
@@ -30,6 +31,7 @@ export default class Bundle extends React.Component {
     }
 
     render() {
-        return this.state.mod ? this.props.children(this.state.mod) : null;
+        let spin = <div style={{textAlign: 'center', marginTop:50}}><Spin size="large"/><br/>正在玩命加载中。。。</div>;
+        return  this.state.mod ? this.props.children(this.state.mod) : spin;
     }
 }

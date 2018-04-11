@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch, Miss } from 'react-router-dom'
 
 import './index.css';
 // import { counter } from "./index.redux";
@@ -11,6 +11,7 @@ import reducers from './reducer'
 import App from './App'
 import MenuBar from './components/MenuBar'
 import About from './container/about/About'
+import Dashboard from './container/dashboard/Dashboard'
 
 import './config'
 import gif from './imgs/404.gif'
@@ -69,14 +70,18 @@ ReactDOM.render(
                         <Route path='/stock' component={Stock} />
                         <Route path='/about' component={About} />
                         <Route path='/code-guide' component={CodeGuide} />
+                        {/*<Route path='/dashboard' component={Dashboard} />*/}
                         {/*<Miss component={NoMatch}/>*/}
                         {/*<Redirect to='/' />*/}
-                        <Route path="*" component={NoMatch} />
                         {/*<Route path='/404' component={NoMatch} />*/}
                         {/*<Redirect from='*' to='/404' />*/}
                     </Switch>
                 </div>
+                <Switch>
+                    <Route path='/dashboard' component={Dashboard} />
 
+                    <Route path="*" component={NoMatch}/>
+                </Switch>
             </div>
         </Router>
     </Provider>,
