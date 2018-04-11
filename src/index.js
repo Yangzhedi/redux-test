@@ -14,8 +14,8 @@ import About from './container/about/About'
 
 import './config'
 import gif from './imgs/404.gif'
-// import registerServiceWorker from './registerServiceWorker';
-// registerServiceWorker();
+import registerServiceWorker from './registerServiceWorker';
+
 
 import Bundle from './Bundle'
 
@@ -82,3 +82,4 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+registerServiceWorker();

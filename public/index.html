@@ -21,15 +21,6 @@
     -->
     <title> 杨哲迪的个人网站 - Yang Zhedi's Personal Website </title>
   </head>
-  <!--<script>-->
-      <!--var _hmt = _hmt || [];-->
-      <!--(function() {-->
-          <!--var hm = document.createElement("script");-->
-          <!--hm.src = "https://hm.baidu.com/hm.js?c95ecd4deac84d09e9e2f8a51711d3f1";-->
-          <!--var s = document.getElementsByTagName("script")[0];-->
-          <!--s.parentNode.insertBefore(hm, s);-->
-      <!--})();-->
-  <!--</script>-->
   <script>
       var _hmt = _hmt || [];
       (function() {
@@ -38,6 +29,23 @@
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
       })();
+  </script>
+  <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+              navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                  // Registration was successful
+                  console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }, function(err) {
+                  // registration failed :(
+                  console.log('ServiceWorker registration failed: ', err);
+              }).catch(function(err) {
+                  console.log(err)
+              });
+          });
+      } else {
+          console.log('service worker is not supported');
+      }
   </script>
   <!--<script type="text/javascript">-->
       <!--var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
