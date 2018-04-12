@@ -11,7 +11,7 @@ import reducers from './reducer'
 import App from './App'
 import MenuBar from './components/MenuBar'
 import About from './container/about/About'
-import Dashboard from './container/dashboard/Dashboard'
+import Dashboard from './dashboard/Dashboard'
 
 import './config'
 import gif from './imgs/404.gif'
@@ -48,6 +48,12 @@ const BlogList = (props) => (
     </Bundle>
 );
 
+// const Dashboard = (props) => (
+//     <Bundle load={() => import('./dashboard/Dashboard')}>
+//         {(Dashboard) => <Dashboard {...props}/>}
+//     </Bundle>
+// );
+
 const NoMatch = ({ location }) => (
     <div className="container">
         <p>Nothing matched {location.pathname}.</p>
@@ -77,11 +83,7 @@ ReactDOM.render(
                         {/*<Redirect from='*' to='/404' />*/}
                     </Switch>
                 </div>
-                <Switch>
-                    <Route path='/dashboard' component={Dashboard} />
-
-                    <Route path="*" component={NoMatch}/>
-                </Switch>
+                <Route path='/dashboard' component={Dashboard} />
             </div>
         </Router>
     </Provider>,
