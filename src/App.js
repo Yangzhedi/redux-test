@@ -34,13 +34,13 @@ class App extends Component {
                 this website is made by Django 2.0 and React 16
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>留言发送到<a href="Mailto:uiryzd@163.com">uiryzd@163.com</a></p>
-                <a href="https://www.zhihu.com/people/yang-xiao-shi-er" target="_blank">
+                <a href="https://www.zhihu.com/people/yang-xiao-shi-er" target="_blank" rel="noopener noreferrer">
                     <Icon type="zhihu" style={{ fontSize: 20, color: '#0084ff' }}/>
                 </a>
-                <a href="https://weibo.com/2623520145/profile" target="_blank">
+                <a href="https://weibo.com/2623520145/profile" target="_blank" rel="noopener noreferrer">
                     <Icon type="weibo" style={{ fontSize: 20, color: '#e6162d' }}/>
                 </a>
-                <a href="https://github.com/Yangzhedi" target="_blank">
+                <a href="https://github.com/Yangzhedi" target="_blank" rel="noopener noreferrer">
                     <Icon type="github" style={{ fontSize: 20, color: '#24292e' }}/>
                 </a>
 

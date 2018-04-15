@@ -26,6 +26,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/*仪表盘的layouts*/
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -42,4 +43,30 @@
   height: 32px;
   background: rgba(255,255,255,.2);
   margin: 16px;
+}
+
+/*表单*/
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+@media (min-width: 768px){
+  .login-container{
+     width: 100vw;
+     height: 100vh;
+     background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+     background-repeat: no-repeat;
+     background-position: center 110px;
+     background-size: 100%;
+  }
+  .login-div{
+    padding: 112px 0 24px;
+    width:400px;
+    margin:0 auto;
+  }
 }

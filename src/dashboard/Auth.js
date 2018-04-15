@@ -16,7 +16,7 @@ class Auth extends React.Component {
     }
 
     componentDidMount(){
-        this.props.login()
+        this.props.login({user:'123', password:'123'})
         // axios.get('/blog1')
         //     .then( res => {
         //         if (res.status === 200) {
@@ -29,6 +29,7 @@ class Auth extends React.Component {
     render(){
         return (
             <div>
+
                 <h2>我的名字是{this.props.user},年龄是{this.props.age}</h2>
                 { this.props.isAuth ? <Redirect to='/dashboard' /> : null}
                 <h2> 你没有权限，需要登录 </h2>

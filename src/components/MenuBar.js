@@ -16,8 +16,8 @@ class MenuBar extends React.Component {
         this.setState({
             current: state || 'home'
         });
-        console.log(this.props.history.location.pathname.indexOf('/dashboard'));
-        console.log(this.props.history.location.pathname);
+        // console.log(this.props.history.location.pathname.indexOf('/dashboard'));
+        // console.log(this.props.history.location.pathname);
     }
 
     handleClick = (e) => {
@@ -30,6 +30,7 @@ class MenuBar extends React.Component {
 
     render() {
         let idx = this.props.history.location.pathname.indexOf('/dashboard');
+        let idx2 = this.props.history.location.pathname.indexOf('/login');
         let menu = <div className="menubar-container">
             <a onClick={() => { this.props.history.push('/');this.setState({current: 'home'}) }}>杨哲迪的个人网站</a>
             <Menu onClick={this.handleClick}
@@ -60,7 +61,7 @@ class MenuBar extends React.Component {
             </Menu>
         </div>;
         return (
-            idx === -1 ? menu : null
+            (idx === -1 && idx2 === -1) ? menu : null
         );
     }
 }

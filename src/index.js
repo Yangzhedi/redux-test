@@ -12,6 +12,7 @@ import App from './App'
 import MenuBar from './components/MenuBar'
 import About from './container/about/About'
 import Dashboard from './dashboard/Dashboard'
+import Login from './dashboard/Login'
 
 import './config'
 import gif from './imgs/404.gif'
@@ -83,6 +84,7 @@ ReactDOM.render(
                         {/*<Redirect from='*' to='/404' />*/}
                     </Switch>
                 </div>
+                <Route path='/login' component={Login} />
                 <Route path='/dashboard' component={Dashboard} />
             </div>
         </Router>

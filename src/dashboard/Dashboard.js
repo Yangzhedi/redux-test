@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, Route, Redirect, Switch} from 'react-router-dom';
 import { connect } from 'react-redux'
-import { logout } from './Auth.redux'
+import { logout } from '../redux/auth.redux'
 import './dashboard.css';
 import { Layout, Menu, Icon } from 'antd';
 import CreateBlog from "./blog/CreateBlog";
@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
                     </Content>
                 </Layout>
             </Layout>
-            {/*{ this.props.isAuth? <button  onClick={this.props.logout}>注销</button>:null}*/}
+            {/*{ this.props.isAuth? <button onClick={this.props.logout}>注销</button>:null}*/}
             {/*<ul>*/}
                 {/*<li>*/}
                     {/*<Link to={`${match.url}/`}>1</Link>*/}
@@ -88,8 +88,8 @@ class Dashboard extends React.Component {
                 {/*</li>*/}
             {/*</ul>*/}
         </div>);
-        // return this.props.isAuth ? app: redirectToLogin;
-        return  app;
+        return this.props.isAuth ? app: redirectToLogin;
+        // return  app;
     }
 }
 class DashboardIndex extends React.Component {
