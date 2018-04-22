@@ -52,6 +52,9 @@ class MenuBar extends React.Component {
                 <Menu.Item key="code-guide">
                     <Icon type="code-o" /> 规范
                 </Menu.Item>
+                <Menu.Item key="gif-maker">
+                    <Icon type="picture" /> 生成表情包
+                </Menu.Item>
                 <Menu.Item key="zip" disabled>
                     <Icon type="picture" /> 图片压缩
                 </Menu.Item>

@@ -20,6 +20,7 @@ import gif from './imgs/404.gif'
 // registerServiceWorker();
 
 import Bundle from './Bundle'
+import GifMaker from "./container/gif-maker/GifMaker";
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
 
@@ -77,6 +78,7 @@ ReactDOM.render(
                         <Route path='/stock' component={Stock} />
                         <Route path='/about' component={About} />
                         <Route path='/code-guide' component={CodeGuide} />
+                        <Route path='/gif-maker' component={GifMaker} />
                         {/*<Route path='/dashboard' component={Dashboard} />*/}
                         {/*<Miss component={NoMatch}/>*/}
                         {/*<Redirect to='/' />*/}
