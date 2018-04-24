@@ -7,7 +7,7 @@ import './blog.css'
 const CheckboxGroup = Checkbox.Group;
 const { TextArea } = Input;
 
-const plainOptions = ['Apple', 'Pear', 'Orange','Apple', 'Pear', 'Orange','Apple', 'Pear', 'Orange'];
+// const plainOptions = ['Apple', 'Pear', 'Orange','Apple', 'Pear', 'Orange','Apple', 'Pear', 'Orange'];
 
 export default class CreateBlog extends React.Component {
     constructor(props){
@@ -27,7 +27,7 @@ export default class CreateBlog extends React.Component {
     }
 
     handleRawChange = (rawContent) => {
-        console.log(rawContent)
+        // console.log(rawContent)
     }
     componentDidMount(){
         // axios.get('/blog1')
@@ -87,7 +87,7 @@ export default class CreateBlog extends React.Component {
                     </Col>
                     <Col span={11} offset={3}>
                         <p>tags<Button type="primary" shape="circle" icon="plus" size='small' /></p>
-                        <CheckboxGroup options={plainOptions} defaultValue={['Apple']} onChange={this.onCheckboxChange} />
+                        {/*<CheckboxGroup options={plainOptions} defaultValue={['Apple']} onChange={this.onCheckboxChange} />*/}
 
                     </Col>
                 </Row>
@@ -95,6 +95,8 @@ export default class CreateBlog extends React.Component {
 
                 <BraftEditor {...editorProps}/>
                 <div dangerouslySetInnerHTML={{__html: this.state.content}}/>
+                <Button onClick={() => {console.log(this.state.content)}}>render content</Button>
+                <div>{this.state.content}</div>
             </div>
         )
     }

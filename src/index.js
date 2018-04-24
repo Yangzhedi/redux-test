@@ -13,6 +13,7 @@ import MenuBar from './components/MenuBar'
 import About from './container/about/About'
 import Dashboard from './dashboard/Dashboard'
 import Login from './dashboard/Login'
+import CodeGuide from './container/code-guide/CodeGuide'
 
 import './config'
 import gif from './imgs/404.gif'
@@ -38,14 +39,12 @@ function Stock (){
     );
 }
 
-const CodeGuide = (props) => (
-    <Bundle load={() => import('./container/code-guide/CodeGuide')}>
-        {(CodeGuide) => <CodeGuide {...props}/>}
-    </Bundle>
-);
 
 const BlogList = (props) => (
-    <Bundle load={() => import('./container/blog/BlogList')}>
+    <Bundle load={() => {
+        console.log(import('./container/blog/BlogList'));
+        return import('./container/blog/BlogList')
+    }}>
         {(BlogList) => <BlogList {...props}/>}
     </Bundle>
 );
