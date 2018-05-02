@@ -1,12 +1,8 @@
 import React from 'react';
-import { BackTop, Anchor } from 'antd';
-// import LeanReact from './LeanReact'
-
-import Bundle from '../../Bundle'
-
+import { BackTop, Anchor } from 'antd'
+import Bundle from '../../config/Bundle'
 
 const { Link } = Anchor;
-
 
 const LeanReact = (props) => (
     <Bundle load={() => import('./LeanReact')}>
@@ -36,7 +32,7 @@ export default class CodeGuide extends React.Component {
     render() {
         return (
             <div>
-                <p>Airbnb React编码规范</p>
+                {/*<p>Airbnb React编码规范</p>*/}
                 <div className="content">
                     <BackTop />
                     <div className="main">

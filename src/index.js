@@ -4,6 +4,8 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect, Switch, Miss } from 'react-router-dom'
+import Loadable from 'react-loadable';
+import Loading from './config/Loading';
 
 import './index.css';
 // import { counter } from "./index.redux";
@@ -20,7 +22,7 @@ import gif from './imgs/404.gif'
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
 
-import Bundle from './Bundle'
+import Bundle from './config/Bundle'
 import GifMaker from "./container/gif-maker/GifMaker";
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
@@ -42,18 +44,27 @@ function Stock (){
 
 const BlogList = (props) => (
     <Bundle load={() => {
-        console.log(import('./container/blog/BlogList'));
         return import('./container/blog/BlogList')
     }}>
         {(BlogList) => <BlogList {...props}/>}
     </Bundle>
 );
 
-// const Dashboard = (props) => (
-//     <Bundle load={() => import('./dashboard/Dashboard')}>
-//         {(Dashboard) => <Dashboard {...props}/>}
-//     </Bundle>
-// );
+
+
+
+// const BlogList = Loadable({
+//     loader: () => import('./container/blog/BlogList'),
+//     loading: Loading,
+//     timeout:1000
+// });
+//
+//
+// const CodeGuide = Loadable({
+//     loader: () => import('./container/code-guide/CodeGuide'),
+//     loading: Loading,
+// });
+
 
 const NoMatch = ({ location }) => (
     <div className="container">
