@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, Miss } from 'react-ro
 import Loadable from 'react-loadable';
 import Loading from './config/Loading';
 
-import './index.css';
+import styles from './index.css';
 // import { counter } from "./index.redux";
 import reducers from './reducer'
 import App from './App'
@@ -67,7 +67,7 @@ const BlogList = (props) => (
 
 
 const NoMatch = ({ location }) => (
-    <div className="container">
+    <div className={styles.container}>
         <p>Nothing matched {location.pathname}.</p>
         <img src={gif} alt="404的图片404了"/>
     </div>
@@ -80,7 +80,7 @@ ReactDOM.render(
             {/*<App />*/}
             <div>
                 <MenuBar/>
-                <div className="container">
+                <div className={styles.container}>
                     <Switch>
                         {/*只渲染命中的第一个Route*/}
                         <Route path='/' exact component={App} />

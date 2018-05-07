@@ -2,12 +2,11 @@ import React from 'react';
 import {Link, Route, Redirect, Switch} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../redux/auth.redux'
-import './dashboard.css';
 import { Layout, Menu, Icon } from 'antd';
 import CreateBlog from "./blog/CreateBlog";
 import BlogList from "./blog/BlogList";
 import Tag from "./tag/Tag";
-
+import styles from "./dashboard.css"
 
 const { Header, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -31,14 +30,14 @@ class Dashboard extends React.Component {
         const match = this.props.match;
         const redirectToLogin = <Redirect to='/login' />;
         const app = (
-            <div id="components-layout-demo-custom-trigger">
+            <div className={styles.componentsLayoutDemoCustomTrigger}>
             <Layout>
                 <Sider
                     trigger={null}
                     collapsible
                     collapsed={this.state.collapsed}
                 >
-                    <a href="/"><div className="logo" /></a>
+                    <a href="/"><div className={styles.logo} /></a>
 
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <SubMenu key="0" title={<span><Icon type="book" /><span> 博客 </span></span>}>
@@ -88,8 +87,8 @@ class Dashboard extends React.Component {
                 {/*</li>*/}
             {/*</ul>*/}
         </div>);
-        return this.props.isAuth ? app: redirectToLogin;
-        // return  app;
+        // return this.props.isAuth ? app: redirectToLogin;
+        return  app;
     }
 }
 class DashboardIndex extends React.Component {
