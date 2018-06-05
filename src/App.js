@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCountAsync,subCount, addCount } from "./index.redux";
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.css';
 import { Icon } from 'antd'
 
 // const mapStatetoProps = state => {
@@ -32,7 +32,7 @@ class App extends Component {
         return (
             <div className="">
                 this website is made by Django 2.0 and React 16
-                <img src={logo} className="App-logo" alt="logo" />
+                <img src={logo} className={styles.AppLogo} alt="logo" />
                 <p>留言发送到<a href="Mailto:uiryzd@163.com">uiryzd@163.com</a></p>
                 <a href="https://www.zhihu.com/people/yang-xiao-shi-er" target="_blank" rel="noopener noreferrer">
                     <Icon type="zhihu" style={{ fontSize: 20, color: '#0084ff' }}/>

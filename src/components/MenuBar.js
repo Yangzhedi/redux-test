@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import { withRouter } from 'react-router-dom'
-
+import styles from './MenuBar.css'
 
 class MenuBar extends React.Component {
     constructor(props){
@@ -31,7 +31,7 @@ class MenuBar extends React.Component {
     render() {
         let idx = this.props.history.location.pathname.indexOf('/dashboard');
         let idx2 = this.props.history.location.pathname.indexOf('/login');
-        let menu = <div className="menubar-container">
+        let menu = <div className={styles.menubarContainer}>
             <a onClick={() => { this.props.history.push('/');this.setState({current: 'home'}) }}>杨哲迪的个人网站</a>
             <Menu onClick={this.handleClick}
                   selectedKeys={[this.state.current]}
@@ -52,12 +52,12 @@ class MenuBar extends React.Component {
                 <Menu.Item key="code-guide">
                     <Icon type="code-o" /> 规范
                 </Menu.Item>
-                <Menu.Item key="gif-maker">
+                <Menu.Item key="gif-maker" disabled>
                     <Icon type="picture" /> 生成表情包
                 </Menu.Item>
-                <Menu.Item key="zip" disabled>
-                    <Icon type="picture" /> 图片压缩
-                </Menu.Item>
+                {/*<Menu.Item key="zip" disabled>*/}
+                    {/*<Icon type="picture" /> 图片压缩*/}
+                {/*</Menu.Item>*/}
                 <Menu.Item key="dashboard">
                     <Icon type="picture" /> Dashboard
                 </Menu.Item>
