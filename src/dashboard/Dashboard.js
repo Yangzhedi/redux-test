@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
         collapsed: false,
     };
     toggle = () => {
+        [].includes()
         this.setState({
             collapsed: !this.state.collapsed,
         });
@@ -32,7 +33,7 @@ class Dashboard extends React.Component {
         const app = (
             <div className={styles.componentsLayoutDemoCustomTrigger}>
             <Layout>
-                <Sider
+                <Sider className={styles.dashboardSider}
                     trigger={null}
                     collapsible
                     collapsed={this.state.collapsed}
@@ -58,8 +59,7 @@ class Dashboard extends React.Component {
                 </Sider>
                 <Layout>
                     <Header style={{ background: '#fff', padding: 0 }}>
-                        <Icon
-                            className="trigger"
+                        <Icon className={styles.trigger}
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />

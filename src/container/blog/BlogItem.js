@@ -26,10 +26,10 @@ export default class BlogItem extends React.Component {
         if (this.props.location.state) {
             this.setState({blog: this.props.location.state})
         } else {
-            console.log('meiy ')
+            console.log(this.props.location.pathname.split('/')[2])
         }
         // 如果没有参数传递就获取
-        // axios.post('/api/v1/get-all-blogs', {page: 1, size: 5})
+        // axios.post('/api/v1/get-blog', {id: 1})
         //     .then( res => {
         //         if (res.status === 200) {
         //             // dispatch(userData(res.data));
@@ -43,7 +43,7 @@ export default class BlogItem extends React.Component {
         return (
             <div className="">
                 BlogList
-
+                <div dangerouslySetInnerHTML={{__html: this.state.blog.content}}/>
             </div>
         );
     }
