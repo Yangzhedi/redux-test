@@ -33,7 +33,7 @@ const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f 
 // applyMiddleware 管理中间件
 const store = createStore(reducers, compose(
     applyMiddleware(loggerMiddleware),
-    applyMiddleware(parseMiddleware),
+    // applyMiddleware(parseMiddleware),
     applyMiddleware(thunk),
     reduxDevtools
 ));

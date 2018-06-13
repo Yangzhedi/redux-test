@@ -3,7 +3,8 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { addCount, addCountAsync } from '../../index.redux'
-
+import { Pagination } from 'antd';
+import style from './blog.css'
 
 @connect(
     state => { return {counter: state.counter}},
@@ -13,9 +14,10 @@ class BlogList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            blogData: []
+            blogData: [],
+            page: 1,
+            totalBlogs: 0
         }
-
     }
 
     componentWillMount() {
@@ -24,12 +26,15 @@ class BlogList extends React.Component {
 
     componentDidMount() {
 
-        axios.post('/api/v1/get-all-blogs', {page: 1, size: 5})
+        axios.post('/api/v1/get-all-blogs', {page: this.state.page, size: 5})
             .then( res => {
                 if (res.status === 200) {
                     // dispatch(userData(res.data));
                     this.setState({blogData:res.data})
-                    console.log(res.data)
+                    console.log(res.headers["x-total"])
+                    this.setState({
+                        totalBlogs: parseInt(res.headers["x-total"])
+                    })
                 }
             })
     }
@@ -40,22 +45,44 @@ class BlogList extends React.Component {
         this.props.history.push({ pathname: `/blog/${blog.id}`, state: blog });
     }
 
+    onPageChange = (page) => {
+        this.setState({ page })
+        console.log(this.state.page);
+        axios.post('/api/v1/get-all-blogs', {page: page, size: 5})
+            .then( res => {
+                if (res.status === 200) {
+                    // dispatch(userData(res.data));
+                    this.setState({blogData:res.data})
+                    console.log(res.headers["x-total"])
+                    this.setState({
+                        totalBlogs: parseInt(res.headers["x-total"])
+                    })
+                }
+            })
+    }
+
     render() {
-        console.log(this.props.counter);
+        // console.log(this.state.page);
         return (
             <div className="">
-                BlogList
-                <button onClick={() => {this.props.addCount( '{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}')}}>add </button>
-                <button onClick={() => {this.props.addCountAsync('{"count":321}')}}>addCountAsync </button>
+                {/*BlogList*/}
+                {/*<button onClick={() => {this.props.addCount( '{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}')}}>add </button>*/}
+                {/*<button onClick={() => {this.props.addCountAsync('{"count":321}')}}>addCountAsync </button>*/}
+                <div className={style.blogList}>
                 {
                     this.state.blogData.map((item, index) => {
-                        return (<div key={index}>
+                        return (<div key={index} className={style.blogItem}>
                             <h3 onClick={() => {this.handleClick(item)}}>{item.title}</h3>
                             <div dangerouslySetInnerHTML={{__html: item.description}}/>
                             {/*<div dangerouslySetInnerHTML={{__html: item.content}}/>*/}
                             </div>)
                     })
                 }
+                </div>
+                <div className={style.blogPagination}>
+                    <Pagination pageSize={5} total={this.state.totalBlogs} current={this.state.page} defaultCurrent={1}
+                                onChange={this.onPageChange}/>
+                </div>
             </div>
         );
     }

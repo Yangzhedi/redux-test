@@ -1,0 +1,24 @@
+.container{
+    width: 800px;
+    transition: all .3s;
+}
+.articleSub{
+    color: #999;
+}
+.classification{
+    border: 1px solid #999;
+    padding: 1px 2px;
+    margin-right: 20px;
+}
+.content{
+    margin: 30px 0 100px;
+}
+.blogList{
+    min-height: 500px;
+}
+.blogPagination{
+
+}
+.blogItem{
+    min-height: 99px;
+}
