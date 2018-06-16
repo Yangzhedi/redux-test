@@ -61,15 +61,15 @@ class BlogItem extends React.Component {
     render() {
         // console.log(this.state.blog);
         return (
-            <div className={style.container}>
+            <div className={style.container} id="answer">
                 <Breadcrumb>
                     <Breadcrumb.Item><Link to='/blog'>博客列表</Link></Breadcrumb.Item>
                     <Breadcrumb.Item>{this.state.blog.title}</Breadcrumb.Item>
                 </Breadcrumb>
-                <h1>{this.state.blog.title}</h1>
+                <h1 style={{cursor:'pointer'}}>{this.state.blog.title}</h1>
                 <div className={style.articleSub}>
                     <span className={style.classification}>{this.state.blog.classification}</span>
-                    <span>{this.state.blog.create_time}</span>
+                    <span>{this.state.blog.timestamp}</span>
                 </div>
                 <div className={style.content}
                      dangerouslySetInnerHTML={{__html: this.state.blog.content}}/>

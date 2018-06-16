@@ -17,7 +17,8 @@ class BlogList extends React.Component {
             blogData: [],
             page: 1,
             totalBlogs: 0
-        }
+        };
+        this.size = 7
     }
 
     componentWillMount() {
@@ -26,7 +27,7 @@ class BlogList extends React.Component {
 
     componentDidMount() {
 
-        axios.post('/api/v1/get-all-blogs', {page: this.state.page, size: 5})
+        axios.post('/api/v1/get-all-blogs', {page: this.state.page, size: this.size})
             .then( res => {
                 if (res.status === 200) {
                     // dispatch(userData(res.data));
@@ -48,7 +49,7 @@ class BlogList extends React.Component {
     onPageChange = (page) => {
         this.setState({ page })
         console.log(this.state.page);
-        axios.post('/api/v1/get-all-blogs', {page: page, size: 5})
+        axios.post('/api/v1/get-all-blogs', {page: page, size: this.size})
             .then( res => {
                 if (res.status === 200) {
                     // dispatch(userData(res.data));
@@ -72,15 +73,17 @@ class BlogList extends React.Component {
                 {
                     this.state.blogData.map((item, index) => {
                         return (<div key={index} className={style.blogItem}>
-                            <h3 onClick={() => {this.handleClick(item)}}>{item.title}</h3>
-                            <div dangerouslySetInnerHTML={{__html: item.description}}/>
+                            <h2 style={{cursor:'pointer'}} onClick={() => {this.handleClick(item)}}>{item.title}</h2>
+                            <span className={style.blogTime}>{item.timestamp}</span>
+                            <div className={style.blogDescription}  dangerouslySetInnerHTML={{__html: item.description}}/>
                             {/*<div dangerouslySetInnerHTML={{__html: item.content}}/>*/}
-                            </div>)
+                            {/*<hr/>*/}
+                        </div>)
                     })
                 }
                 </div>
                 <div className={style.blogPagination}>
-                    <Pagination pageSize={5} total={this.state.totalBlogs} current={this.state.page} defaultCurrent={1}
+                    <Pagination pageSize={this.size} total={this.state.totalBlogs} current={this.state.page} defaultCurrent={1}
                                 onChange={this.onPageChange}/>
                 </div>
             </div>

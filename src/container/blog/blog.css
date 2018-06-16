@@ -1,6 +1,10 @@
+/*blogItem*/
 .container{
     width: 800px;
     transition: all .3s;
+}
+.container img{
+    max-width: 800px !important;
 }
 .articleSub{
     color: #999;
@@ -13,12 +17,26 @@
 .content{
     margin: 30px 0 100px;
 }
+
+
+/*blogList*/
 .blogList{
-    min-height: 500px;
+    width: 750px;
+    min-height: 750px;
 }
 .blogPagination{
 
 }
 .blogItem{
-    min-height: 99px;
+    min-height: 140px;
+}
+.blogTime{
+    font-size: 12px;
+    color: #aaa;
+    display: inline-block;
+    margin-bottom: .5em;
+}
+.blogDescription{
+    color: #777;
+    min-height: 65px;
 }

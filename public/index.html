@@ -36,4 +36,33 @@
     </noscript>
     <div id="root"></div>
   </body>
+  <script>
+      function setClipboardText(event){
+          event.preventDefault();
+          var node = document.createElement('div');
+          //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
+          node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
+          var htmlData = node.innerHTML
+              + '<div>著作权归作者所有。<br />'
+              + '商业转载请联系作者获得授权，非商业转载请注明出处。<br />'
+              + '作者：杨哲迪<br />链接：'+window.location.href+'<br />'
+              + '来源：杨哲迪的个人网站 - Yang Zhedi\'s Personal Website<br /><br />'
+              + '</div>';
+          var textData = window.getSelection().getRangeAt(0)
+              + '著作权归作者所有。\n'
+              + '商业转载请联系作者获得授权，非商业转载请注明出处。\n'
+              + '作者：杨哲迪\n链接：'+window.location.href+'\n'
+              + '来源：杨哲迪的个人网站 - Yang Zhedi\'s Personal Website\n\n';
+          if(event.clipboardData){
+              event.clipboardData.setData("text/html", htmlData);
+              event.clipboardData.setData("text/plain",textData);
+          } else if (window.clipboardData){
+              return window.clipboardData.setData("text", textData);
+          }
+      };
+      var root = document.getElementById("root");
+      root.addEventListener('copy',function(e){
+          setClipboardText(e);
+      });
+  </script>
 </html>
