@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import style from '../App.css'
 import { login } from '../redux/auth.redux'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 const FormItem = Form.Item;
@@ -60,9 +60,9 @@ class Login extends React.Component {
     render(){
         const { getFieldDecorator } = this.props.form;
         return (
-            <div className="login-container">
+            <div className={style.loginContainer}>
                 {this.props.redirectTo ? <Redirect to='/dashboard' /> : null}
-                <div style={{width:400, margin:'0 auto'}} className="login-div">
+                <div style={{width:400, margin:'0 auto'}} className={style.loginDiv}>
                     <h2>后台管理登录</h2>
                     <Form onSubmit={this.handleLogin} className="login-form">
                         <FormItem>

@@ -58,9 +58,9 @@ class MenuBar extends React.Component {
                 {/*<Menu.Item key="zip" disabled>*/}
                     {/*<Icon type="picture" /> 图片压缩*/}
                 {/*</Menu.Item>*/}
-                <Menu.Item key="dashboard">
-                    <Icon type="picture" /> Dashboard
-                </Menu.Item>
+                {/*<Menu.Item key="dashboard">*/}
+                    {/*<Icon type="picture" /> Dashboard*/}
+                {/*</Menu.Item>*/}
             </Menu>
         </div>;
         return (

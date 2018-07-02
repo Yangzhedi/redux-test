@@ -87,8 +87,8 @@ class Dashboard extends React.Component {
                 {/*</li>*/}
             {/*</ul>*/}
         </div>);
-        // return this.props.isAuth ? app: redirectToLogin;
-        return  app;
+        return this.props.isAuth ? app: redirectToLogin;
+        // return  app;
     }
 }
 class DashboardIndex extends React.Component {
