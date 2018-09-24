@@ -65,7 +65,7 @@ class BlogList extends React.Component {
     render() {
         // console.log(this.state.page);
         return (
-            <div className="">
+            <div className={style.blogContainer}>
                 {/*BlogList*/}
                 {/*<button onClick={() => {this.props.addCount( '{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}')}}>add </button>*/}
                 {/*<button onClick={() => {this.props.addCountAsync('{"count":321}')}}>addCountAsync </button>*/}

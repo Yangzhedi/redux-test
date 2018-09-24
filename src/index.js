@@ -102,8 +102,10 @@ ReactDOM.render(
                         {/*<Redirect from='*' to='/404' />*/}
                     </Switch>
                 </div>
-                <Route path='/login' component={Login} />
-                <Route path='/dashboard' component={Dashboard} />
+                <div>
+                    <Route path='/login' component={Login} />
+                    <Route path='/dashboard' component={Dashboard} />
+                </div>
             </div>
         </Router>
     </Provider>,

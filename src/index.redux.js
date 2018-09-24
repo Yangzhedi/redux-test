@@ -7,27 +7,27 @@ const SUB_COUNT = 'subtraction';
 export function counter( state=10 , action) {
     switch (action.type){
         case 'addition':
-            return state + 1;
+            return {num:state + 1,...action.payload};
         case 'subtraction':
-            return state - 1;
+            return {num:state - 1,...action.payload};
         default:
             return state;
     }
 }
 
 // action creator
-export function addCount() {
-    return {type: ADD_COUNT}
+export function addCount(data) {
+    return {type: ADD_COUNT, payload:data}
 }
 
-export function subCount() {
-    return {type: SUB_COUNT}
+export function subCount(data) {
+    return {type: SUB_COUNT, payload:data}
 }
 
-export function addCountAsync() {
+export function addCountAsync(data) {
     return dispatch => {
         setTimeout( () => {
-            dispatch(addCount())
+            dispatch(addCount(data))
         },2000)
     }
 }

@@ -20,6 +20,10 @@
 
 
 /*blogList*/
+.blogContainer{
+    padding-top: 50px;
+    min-height: 1200px;
+}
 .blogList{
     width: 750px;
     min-height: 750px;

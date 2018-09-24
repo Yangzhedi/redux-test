@@ -1,5 +1,5 @@
-/*@value primary  #0ff;*/
-/*@value green    #aaf200;*/
+@value primary  #38ffca;
+@value green    #aaf200;
 
 
 /*body {*/
@@ -16,13 +16,18 @@
     /*width: 1000px;*/
     /*!*min-height: 500px;*!*/
 /*}*/
+:global(.salesBar) {
+  color: #1890ff;
+}
+
+
 .container {
   padding-right: 0;
   padding-left: 0;
   margin-right: auto;
   margin-left: auto;
   width: 1000px;
-  /*min-height: 500px;*/
+  /*min-height: 1200px;*/
 }
 
 .container pre {
